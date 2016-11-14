@@ -5,20 +5,6 @@ class Users::BoardsController < ApplicationController
   # prepend_view_path "app/views/boards"
   before_action :set_board, only: [:edit, :destroy]
 
-  def new
-    @board = Board.new
-  end
-
-  def create
-    @board = Board.new(board_params)
-    @board.user = current_user
-    if @board.save
-      redirect_to boards_path
-    else
-      render :new
-    end
-  end
-
   def edit
     render "You Suck" unless current_user = @board.user
   end
